@@ -2,7 +2,7 @@
 
 .container{ 
     margin: 0px 0px; 
-  padding: 0px 100px 0px 100px; 
+  padding: 0px 0px 0px 0px; 
   box-sizing: border-box; 
   max-width: 100%; 
 } 
@@ -16,14 +16,14 @@
     color: #606161; 
     font-weight: 300; 
     box-sizing: border-box; 
-    background-color: #FFF; 
+    // background-color: #FFF; 
     border: 2px dashed #1babe2; 
     text-align: center; 
     width: 100%; 
     display: flex; 
     justify-content: center; 
     align-items: center; 
-    height: 150px; 
+    height: 100%; 
     margin-bottom: 10px; 
     // overflow: hidden; 
     position: relative; 
@@ -47,7 +47,8 @@
         opacity: 0; 
         position: absolute; 
         top: 0; 
-        width: 100%; 
+        width: 100%;
+        height: 100%;
     } 
 } 
 

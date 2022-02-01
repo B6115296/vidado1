@@ -1,0 +1,100 @@
+
+<div class="row">
+  <div class="col-sm-12 col-md-12">
+    <div class="batchfiles-container">
+      <div class="row batch-view">
+        <div class="batchfiles-list" *ngIf="batchitems">
+          <div
+            class="batchfiles row"
+            *ngFor="let items of batchitems ; index as i "
+          >
+            <div class="col-sm-12 col-md-2" *ngFor="let item of items">
+              <input type="checkbox" (click)="addFilesToArray(item)" />
+
+              <div class="batchfile thumbnail-container">
+                <a
+                  id="batchfile-thumb-314494403"
+                  class="empty-href batchfile-thumb-link"
+                >
+                  <div class="basic-thumbnail loaded">
+                    <img
+                      class="basic-thumbnail-spinner loaded"
+                      src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Ajax_loader_metal_512.gif"
+                      style="display: none;"
+                    />
+
+                    <!-- <img class="basic-thumbnail-image thumbnail loaded" src="https://shreddr.captricity.com/api/v1/batch-file/{{item.id}}/page/0/thumbnail/100w" style=""> -->
+
+                    <img
+                      class="basic-thumbnail-image thumbnail loaded"
+                      appLazyLoad="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/PDF_file_icon.svg/1200px-PDF_file_icon.svg.png"
+                      style=""
+                    />
+                  </div>
+                </a>
+
+                <!-- <a class="batch-file-delete-link" href="#"> 
+
+                                    <img src="./static/front/close.png"> 
+
+                                </a> -->
+
+                <p
+                  class="batchfile-name caption"
+                  data-original-title=""
+                  title=""
+                >
+                  {{truncatefile(item.file_name)}}
+                </p>
+
+                <p
+                  class="batchfile-rejection-reason"
+                  style="color: orange;"
+                  *ngIf="item.reject_reason == 'could_not_sort'"
+                >
+                  Could not sort
+                </p>
+
+                <p
+                  class="batchfile-rejection-reason"
+                  style="color: orange;"
+                  *ngIf="item.reject_reason == 'junk'"
+                >
+                  Manually Labeled <br />As Junk
+                </p>
+
+                <!-- <a class="batchfile-corrupt-learn-more" href="">learn more</a> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<input
+  name="checkboxName"
+  id="checkbox1"
+  type="checkbox"
+  value="Value 3"
+  (change)="$any($event.target)?.checked ? (isfrmChecked = true) : isfrmChecked = false; componentMethodName($event,isfrmChecked);"
+/>Value 3
+
+<br />
+
+<input
+  name="checkboxName"
+  id="checkbox2"
+  type="checkbox"
+  value="Value 2"
+  (change)="componentMethodName($event, $any($event.target)?.checked)"
+/>Value 2
+
+<br /><br />
+
+Array value:
+
+<div *ngFor="let chkbox of Array">
+  {{chkbox}}
+</div>

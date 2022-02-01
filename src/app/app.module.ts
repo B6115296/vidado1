@@ -21,6 +21,8 @@ import { ImagePreview } from './directives/thumbnail.directive';
 import { GridComponent } from './grid/grid.component';
 import { ViewbatchComponent } from './views/viewbatch/viewbatch.component';
 import { PagerComponent } from './views/pager/pager.component';
+import { DeleteFilesComponent } from './deletes/delete-files/delete-files.component';
+import { DeleteBatchComponent } from './deletes/delete-batch/delete-batch.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { PagerComponent } from './views/pager/pager.component';
     ImagePreview,
     GridComponent,
     ViewbatchComponent,
-    PagerComponent
+    PagerComponent,
+    DeleteFilesComponent,
+    DeleteBatchComponent
   ],
   imports: [
     BrowserModule,
