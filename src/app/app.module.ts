@@ -18,6 +18,9 @@ import { LazyloadDirective } from './directives/lazyload.directive';
 import { HomescreenComponent } from './pages/homescreen/homescreen.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ImagePreview } from './directives/thumbnail.directive';
+import { GridComponent } from './grid/grid.component';
+import { ViewbatchComponent } from './views/viewbatch/viewbatch.component';
+import { PagerComponent } from './views/pager/pager.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,10 @@ import { ImagePreview } from './directives/thumbnail.directive';
     LazyloadDirective,
     HomescreenComponent,
     NavbarComponent,
-    ImagePreview
+    ImagePreview,
+    GridComponent,
+    ViewbatchComponent,
+    PagerComponent
   ],
   imports: [
     BrowserModule,

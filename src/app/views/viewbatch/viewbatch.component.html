@@ -1,0 +1,175 @@
+<div class="box-container"> 
+    <div class="batch-page"> 
+        <div class="row error"> 
+            <div class="page-error" *ngIf="rejectReasons != null && batch.status == 'rejected'"> 
+                <div id="page-message-content"> 
+                    <div> 
+                        <div class="showerr"> 
+                           <div class="header-error" style="justify-content: center; display:flex;"> There was an error when trying to process this batch.</div> 
+                            <div > 
+                                <ul *ngFor="let err of rejectReasons"> 
+                                   <div [ngSwitch] = err > 
+                                       <li  *ngSwitchCase="'could_not_sort'" > 
+                                        Forms did not match any templates. Review your forms and make sure there is an active template that matches this  
+                                        <a href="/home/" class="batch-error-link">form</a> 
+                                       </li> 
+                                       <div class="junk" *ngSwitchCase="'junk'"> 
+                                        junk 
+                                       </div> 
+                                   </div> 
+                                </ul> 
+                            </div> 
+                        </div> 
+                    </div> 
+                </div> 
+            </div> 
+        </div> 
+        <div class="row header"> 
+            <div class="batch-header" [ngSwitch]="( batch === selectedBatch)"> 
+                <h1 class="batch-name-header"><span class="batch-name" style="margin-right: 20px ;"> 
+                    {{batch.name}} 
+                </span> 
+                </h1> 
+                <!-- <span *ngSwitchCase="true" > 
+                    <div class="editor"> 
+                        <input 
+                            type="text" 
+                            name="value" 
+                            autofocus 
+                            [(ngModel)]="pendingValue" 
+                            (keydown.Enter)="processChanges()" 
+                            (keydown.Meta.Enter)="processChanges()" 
+                            (keydown.Escape)="cancel()" 
+                        /> 
+                        <div (click)="processChanges()" class="savebutton"> 
+                            <i class="bi bi-check " style="font-size:32px;"></i> 
+                        </div> 
+                        <div  
+                            (click)="cancel()" 
+                            (keydown.Enter)="cancel()" 
+                            tabindex="0"> 
+                            <i class="bi bi-x" style="font-size:32px;"></i> 
+                        </div> 
+                    </div> 
+                    </span> 
+                <span *ngSwitchCase="false" (click)="edit( item )"><h1>{{item.name}}</h1></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; --> 
+                <span class="show-alert" style="color: orange;" *ngIf="batch.status == 'rejected'"> 
+                    Could not be process! 
+                    <span class="fa fa-exclamation-circle"></span> 
+                </span><span class="show-alert" style="color: #196e99;" *ngIf="batch.status == 'sorting'"> 
+                    Processing 
+                    <span class="fa fa-plus-circle"></span> 
+                </span> 
+            </div> 
+            <div class="batch-info"> 
+                <p class="subbatch-info" > 
+                    <span class="batch-number-of-files">{{batch.file_count}} files | </span> &nbsp;&nbsp; 
+                    <span class="batch-number-of-files"> Last update on {{batch.last_upload_date}} | </span> &nbsp; 
+                    <span class="batch-number-of-files"> via {{batch.last_uploaded_with}} |</span> &nbsp; 
+                    <span class="batch-number-of-files"> by {{batch.created_by}}</span> 
+                </p> 
+                <div class="button-group"> 
+                    <span class="button-action"> 
+                        <button class="btn btn-primary " style="margin-right:20px ; color:#1babe2; border: solid #1babe2 3px" *ngIf="batch.status == 'setup'">Process this batch</button>
+                        <button class="btn btn-primary" style="margin-right:20px ; color:orange; background:white; border: solid orange 3px" *ngIf="batch.status == 'rejected'">Repair this batch</button> 
+                    </span> 
+                    <span class="list-action-dropdown"> 
+                        <div ngbDropdown class="d-inline-block"> 
+                            <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>More Action</button> 
+                            <div ngbDropdownMenu aria-labelledby="dropdownBasic1"> 
+                              <button ngbDropdownItem>Add files to batch</button> 
+                              <button ngbDropdownItem>Delete files from batch</button> 
+                            </div> 
+                          </div> 
+                    </span> 
+                </div> 
+            </div> 
+        </div> 
+        <div class="row" > 
+            <div class="col-sm-12 col-md-12"> 
+                <div class="batchfiles-container"> 
+                    <div class="row batch-view"> 
+                        <div class="batchfiles-list" *ngIf="batchitems"> 
+                            <div class="batchfiles row" *ngFor="let items of batchitems ; index as i " > 
+                                <div class="col-sm-12 col-md-2" *ngFor="let item of items" > 
+                                    <div class="batchfile thumbnail-container" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="saveBatchDetail(item)">
+                                        <a id="batchfile-thumb-314494403" class="empty-href batchfile-thumb-link"  > 
+                                            <div class="basic-thumbnail loaded"> 
+                                                <img class="basic-thumbnail-spinner loaded" src="./static/front/ajax-loader.gif" style="display: none;"> 
+                                                <!-- <img class="basic-thumbnail-image thumbnail loaded" src="https://shreddr.captricity.com/api/v1/batch-file/{{item.id}}/page/0/thumbnail/100w" style=""> --> 
+                                                <img class="basic-thumbnail-image thumbnail loaded" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/PDF_file_icon.svg/1200px-PDF_file_icon.svg.png" style="">
+                                            </div> 
+                                        </a>
+                                        <!-- <a class="batch-file-delete-link" href="#"> 
+                                            <img src="./static/front/close.png"> 
+                                        </a> --> 
+                                        <p class="batchfile-name caption" data-original-title="" title="">{{truncatefile(item.file_name)}}</p> 
+                                        <p class="batchfile-rejection-reason" style="color: orange;" *ngIf="item.reject_reason == 'could_not_sort'">Could not sort</p> 
+                                        <p class="batchfile-rejection-reason" style="color: orange;" *ngIf="item.reject_reason == 'junk'">Manually Labeled <br>As Junk</p> 
+                                        <!-- <a class="batchfile-corrupt-learn-more" href="">learn more</a> --> 
+                                    </div> 
+                                    <!-- Modal --> 
+                                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" > 
+                                        <div class="modal-dialog" > 
+                                            <div class="modal-content batch-page-modal-content" *ngIf="zoombatch"> 
+                                                <a class="dismiss-modal dismiss-modal-button" data-dismiss="modal" aria-hidden="true" data-bs-dismiss="modal" 
+                                                (click)="resetCount()" routerLink="/box/{{item.id}}"> 
+                                                    <img src="./static/front/close.png"> 
+                                                </a> 
+                                                <h3 class="batchfile-name-in-modal" style="margin: 18px; margin-bottom:10px; font-size: 20px;">{{zoombatch.file_name}}</h3> 
+                                                <p class="batchfile-info-in-modal" style="margin: 0px 18px 18px 18px;">Uploaded on  
+                                                    <span class="batchfile-uploaded-on">{{zoombatch.batch.last_upload_date}}</span> | via  
+                                                    <span class="batchfile-uploaded-with">{{zoombatch.uploaded_with}}</span> | by  
+                                                    <span class="batchfile-uploaded-by">{{zoombatch.uploaded_by}}</span> 
+                                                </p> 
+                                                <div class="slide-thumbnail" *carousel="let page from pageCount; index as i ;let ctrl = controller"> 
+                                                    <div class="left-button disabled" > 
+                                                        <span class="fa fa-arrow-circle-left fa-2x" (click)="ctrl.prev()" style=""></span> 
+                                                        <span class="fa fa-arrow-circle-left fa-2x" style="display: none;"></span> 
+                                                    </div> 
+
+                                                    <div class="right-button disabled" > 
+                                                        <span class="fa fa-arrow-circle-right fa-2x" (click)="ctrl.next()" style=""></span> 
+                                                        <span class="fa fa-arrow-circle-right fa-2x" style="display: none;"></span> 
+                                                    </div> 
+
+                                                    <div class="big-thumbnail" > 
+                                                        <div class="basic-thumbnail loaded" > 
+                                                            {{page}} 
+                                                            <img class="basic-thumbnail-spinner loaded" src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Ajax_loader_metal_512.gif" style="display: none;"> 
+                                                            <img class="basic-thumbnail-image thumbnail loaded" alt="https://shreddr.captricity.com/api/v1/batch-file/{{zoombatch.id}}/page/{{page}}/thumbnail/490w" src="https://shreddr.captricity.com/api/v1/batch-file/{{zoombatch.id}}/page/0/thumbnail/490w" style=""> 
+                                                            <!-- <img class="basic-thumbnail-image thumbnail loaded zoom-image" src="https://www.redelephantreps.com/wp-content/uploads/2020/06/Japan-300x400px.png" style=""> --> 
+                                                        </div> 
+                                                        <!-- <div *carousel="let page from pageCount; let ctrl = controller"> 
+                                                            <p>Url: {{page}}</p> 
+                                                            <img class="basic-thumbnail-image thumbnail loaded" alt="https://shreddr.captricity.com/api/v1/batch-file/314494411/page/{{page}}/thumbnail/490w"src="https://shreddr.captricity.com/api/v1/batch-file/314494411/page/{{page}}/thumbnail/490w" style="">
+                                                            <button (click)="ctrl.prev()">Previous</button> 
+                                                            <button (click)="ctrl.next()">Next</button> 
+                                                        </div> --> 
+                                                    </div> 
+                                                    <div class="view-full-size-link" style="margin: 18px; font-size: 16px;"> 
+                                                        <a href="https://shreddr.captricity.com/api/v1/batch-file/314494411/download" target="_blank">view full size</a> 
+                                                    </div> 
+                                                </div> 
+                                            </div> 
+                                        </div> 
+                                    </div> 
+                                </div> 
+                            </div> 
+                        </div> 
+                    </div> 
+                </div> 
+            </div> 
+        </div> 
+        <div class="back-button" > 
+            <button id="back-to-inbox" class="btn btn-primary" routerLink="/home" style="margin-left:0px;" >Back to Inbox</button> 
+        </div> 
+    </div> 
+</div> 
+
+
+<img appLazyLoad src="https://placekitten.com/414/437">
+<img appLazyLoad src="https://placekitten.com/414/438">
+<img appLazyLoad src="https://placekitten.com/414/439">
+<img appLazyLoad src="https://placekitten.com/414/440">
+

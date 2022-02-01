@@ -1,0 +1,158 @@
+table {
+  margin-top: 20px;
+
+  border-collapse: collapse;
+
+  border-radius: 1em;
+
+  /* overflow: hidden; */
+}
+
+th {
+  background: #d8d8d8;
+}
+
+td {
+  background: rgb(250, 244, 244);
+}
+
+th,
+td {
+  padding: 1em;
+
+  border-bottom: 2px solid white;
+
+  text-align: center;
+}
+
+body {
+  margin: 1.5em;
+}
+
+.fa {
+  cursor: pointer;
+}
+
+th {
+  font-family: "Open Sans", sans-serif;
+
+  font-weight: 300;
+}
+
+.btn-edit {
+  text-align: right;
+}
+
+h2 {
+  text-align: center;
+
+  padding-top: 20px;
+}
+
+.table-header {
+  width: 90%;
+
+  margin: auto;
+
+  text-align: right;
+
+  margin-bottom: 10px;
+}
+
+.button-add-row {
+  background: #1b9e1b;
+
+  color: #ffffff;
+}
+
+.button-remove-rows {
+  background: red;
+
+  color: #ffffff;
+
+  margin-right: 5px;
+}
+
+.button-remove {
+  color: red;
+}
+
+i {
+  cursor: pointer;
+}
+
+.editor {
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+}
+
+.editor button {
+  border-radius: 5px 5px 5px 5px;
+
+  border-width: 0px 0px 0px 0px;
+
+  color: #ffffff;
+
+  font-size: inherit;
+
+  margin-right: 10px;
+
+  padding: 4px 8px 4px 8px;
+}
+
+.editor input {
+  font-size: inherit;
+
+  margin-right: 10px;
+
+  padding: 4px 8px 4px 8px;
+
+  width: 200px;
+}
+
+.editor .savebutton {
+  color: green;
+}
+
+:host {
+  display: block;
+
+  font-size: inherit;
+}
+
+.footer {
+  margin-left: 0;
+
+  margin-bottom: 1rem;
+
+  justify-content: end;
+
+  display: flex;
+
+  align-items: center;
+
+  width: 100%;
+}
+
+.my-pagination /deep/ .ngx-pagination .current {
+  background: #9ed7f0;
+
+  border-radius: 8px;
+}
+
+.my-pagination /deep/ .ngx-pagination .pagination-next {
+  border-radius: 8px;
+
+  border-style: dashed;
+}
+
+.my-pagination /deep/ .ngx-pagination .pagination-previous {
+  border-radius: 8px;
+
+  border-style: dashed;
+
+  border-color: #eeeeee;
+}

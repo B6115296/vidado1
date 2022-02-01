@@ -1,0 +1,134 @@
+<div class="table">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th style="width: 300px;">Batch</th>
+        <th>File Count</th>
+        <th>Last Update</th>
+        <th>Created By</th>
+        <th>Via</th>
+        <th>Status</th>
+        <th>Task</th>
+        <th>Delete</th>
+        <th>More Action</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr
+        *ngFor="let item of batchs| slice:pageIndex*pageSize:(pageIndex+1)*pageSize ; index as i "
+        [ngSwitch]="( item === selectedBatch)"
+      >
+        <td *ngSwitchCase="true">
+          <div class="editor">
+            <input
+              type="text"
+              name="value"
+              autofocus
+              [(ngModel)]="pendingValue"
+              (keydown.Enter)="processChanges()"
+              (keydown.Meta.Enter)="processChanges()"
+              (keydown.Escape)="cancel()"
+            />
+
+            <div (click)="processChanges()" class="savebutton">
+              <i class="bi bi-check" style="font-size: 24px;"></i>
+            </div>
+
+            <div (click)="cancel()" (keydown.Enter)="cancel()" tabindex="0">
+              <i class="bi bi-x" style="font-size: 24px;"></i>
+            </div>
+          </div>
+        </td>
+
+        <!-- <td *ngSwitchCase="false" > <a href="/box/" class="batch-error-link" >{{ item.name }}</a> -->
+
+        <td *ngSwitchCase="false">
+          <a
+            routerLink="/inbox/views/{{item.id}}"
+            class="batch-error-link"
+            (click)="saveSelectedBatch(item)"
+            >{{ item.name }}</a
+          >
+
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i
+            class="bi bi-pen"
+            (click)="edit( item )"
+          ></i>
+        </td>
+
+        <td>{{item.file_count}}</td>
+
+        <td>{{showTime(item.last_upload_date)}}</td>
+
+        <td>{{item.created_by}}</td>
+
+        <td>{{item.last_uploaded_with}}</td>
+
+        <td>
+          <div *ngIf="item.status === 'setup'"><p></p></div>
+
+          <div *ngIf="item.status === 'rejected'">
+            <p style="color: orange;">Could not be process !</p>
+          </div>
+
+          <div *ngIf="item.status === 'sorting'">
+            <p style="color: #135170;">Processing +</p>
+          </div>
+        </td>
+
+        <!-- <td>{{item.status}}</td> -->
+
+        <td>
+          <div *ngIf="item.status == 'setup'">
+            <button type="button" class="btn btn-outline-primary">
+              Process this Batch
+            </button>
+          </div>
+
+          <div *ngIf="item.status == 'rejected'">
+            <button type="button" class="btn btn-outline-warning">
+              Repaire this Batch
+            </button>
+          </div>
+        </td>
+
+        <td>
+          <!-- <button class="btn btn-sm btn-danger" (click)="delete(item.id,i)" ><i class="bi bi-trash-fill"></i></button> -->
+
+          <!-- <app-deletepopup></app-deletepopup> -->
+        </td>
+
+        <td>
+          <div ngbDropdown>
+            <i
+              class="bi bi-three-dots-vertical"
+              id="dropdownConfig"
+              ngbDropdownToggle
+            ></i>
+
+            <div ngbDropdownMenu aria-labelledby="dropdownConfig">
+              <button ngbDropdownItem routerLink="">Add files to Batch</button>
+
+              <!-- <button ngbDropdownItem routerLink="/box">View files in Batch</button> -->
+
+              <button ngbDropdownItem routerLink="/deleteFiles/{{item.id}}">
+                Delete files from Batch
+              </button>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="footer">
+  <app-pager
+    [itemCount]="batchs.length"
+    [(pageIndex)]="pageIndex"
+    [pageSize]="pageSize"
+  ></app-pager>
+
+  <!-- <pagination-controls class="my-pagination"(pageChange)="p = $event"></pagination-controls> -->
+</div>

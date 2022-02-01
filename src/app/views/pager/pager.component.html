@@ -1,0 +1,15 @@
+<div class="btn-group" role="group" aria-label="Basic outlined example"> 
+
+    <button class="btn btn-info" [disabled]="!canMoveToPreviousPage" (click)="moveToFirstPage()"><i _ngcontent-c13="" class="fa fa-angle-double-left fa-2x"></i></button> 
+
+    <button class="btn btn-info" [disabled]="!canMoveToPreviousPage" (click)="moveToPreviousPage()"><i _ngcontent-c13="" class="fa fa-angle-left fa-2x"></i></button> 
+
+    <button class="btn btn-info" disabled style="width:50px">{{pageIndex + 1}}</button> 
+
+    <button class="btn btn-info" disabled style="width:65px">of {{_pageCount}}</button> 
+
+    <button class="btn btn-info" [disabled]="!canMoveToNextPage" (click)="moveToNextPage()"><i _ngcontent-c13="" class="fa fa-angle-right fa-2x"></i></button> 
+
+    <button class="btn btn-info" [disabled]="!canMoveToNextPage" (click)="moveToLastPage()"><i _ngcontent-c13="" class="fa fa-angle-double-right fa-2x"></i></button> 
+
+  </div> 
