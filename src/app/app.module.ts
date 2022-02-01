@@ -17,6 +17,7 @@ import { CarouselDirective } from './directives/carousel.directive';
 import { LazyloadDirective } from './directives/lazyload.directive';
 import { HomescreenComponent } from './pages/homescreen/homescreen.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { ImagePreview } from './directives/thumbnail.directive';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     CarouselDirective,
     LazyloadDirective,
     HomescreenComponent,
-    NavbarComponent
+    NavbarComponent,
+    ImagePreview
   ],
   imports: [
     BrowserModule,

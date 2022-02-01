@@ -6,7 +6,7 @@
               <li *ngFor="let item of uploader.slice(-5); index as i"> 
                 <div class="thumbnail-container" > 
                   <div style="position: relative"> 
-                    <img *ngIf="item.isUploaded == true " src="item?._file" imgPreview  class="media-object"/> 
+                    <img *ngIf="item.isUploaded == true " src="" imgPreview [image]="item?._file" class="media-object"/> 
                     <div class="uploading-spinner-div" *ngIf="item.isUploading == true"> 
                       <img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Ajax_loader_metal_512.gif" /> 
                     </div> 
@@ -24,7 +24,7 @@
               <a>or click to browse</a> 
             </div> -->
             <div class="left-bottom-button"> 
-              <button class="btn btn-primary" *ngIf="batchId" (click)="show()" routerLink="/box/{{batchId}}" style="margin-right: 20px;">Finish</button> 
+              <button class="btn btn-primary" *ngIf="batchId" (click)="show()" routerLink="/home" style="margin-right: 20px;">Finish</button> 
               <button class="btn btn-primary" *ngIf="!batchId " (click)="show()" routerLink="/home" style="margin-right: 20px;">Finish</button> 
             </div> 
           </div> 
