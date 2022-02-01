@@ -1,0 +1,67 @@
+<div class="container" > 
+    <div class="row header"> 
+        <div class="batch-header" > 
+            <h1 class="batch-name-header"><span class="batch-name" style="margin-right: 20px ;"> 
+                {{batch.name}} 
+            </span> 
+            </h1> 
+            <!-- <span *ngSwitchCase="true" > 
+                <div class="editor"> 
+                    <input 
+                        type="text" 
+                        name="value" 
+                        autofocus 
+                        [(ngModel)]="pendingValue" 
+                        (keydown.Enter)="processChanges()" 
+                        (keydown.Meta.Enter)="processChanges()" 
+                        (keydown.Escape)="cancel()" 
+                    /> 
+                    <div (click)="processChanges()" class="savebutton"> 
+                        <i class="bi bi-check " style="font-size:32px;"></i> 
+                    </div> 
+                    <div  
+                        (click)="cancel()" 
+                        (keydown.Enter)="cancel()" 
+                        tabindex="0"> 
+                        <i class="bi bi-x" style="font-size:32px;"></i> 
+                    </div> 
+                </div> 
+                </span> 
+            <span *ngSwitchCase="false" (click)="edit( item )"><h1>{{item.name}}</h1></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; --> 
+            <span class="show-alert" style="color: orange;" *ngIf="batch.status == 'rejected'"> 
+                Could not be process! 
+                <span class="fa fa-exclamation-circle"></span> 
+            </span><span class="show-alert" style="color: #196e99;" *ngIf="batch.status == 'sorting'"> 
+                Processing 
+                <span class="fa fa-plus-circle"></span> 
+            </span> 
+        </div> 
+        <div class="batch-info"> 
+            <p class="subbatch-info" > 
+                <span class="batch-number-of-files">{{batch.file_count}} files | </span> &nbsp;&nbsp; 
+                <span class="batch-number-of-files"> Last update on {{batch.last_upload_date}} | </span> &nbsp; 
+                <span class="batch-number-of-files"> via {{batch.last_uploaded_with}} |</span> &nbsp; 
+                <span class="batch-number-of-files"> by {{batch.created_by}}</span> 
+            </p> 
+
+            <div class="button-group"> 
+                <span class="button-action"> 
+                    <button class="btn btn-primary " style="margin-right:20px ; color:#1babe2;background:white; border: solid #1babe2 3px" *ngIf="batch.status == 'setup'">Process this batch</button> 
+                    <button class="btn btn-primary" style="margin-right:20px ; color:orange; background:white; border: solid orange 3px" *ngIf="batch.status == 'rejected'">Repair this batch</button> 
+                </span> 
+
+                <span class="list-action-dropdown"> 
+                    <div ngbDropdown class="d-inline-block"> 
+                        <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>More Action</button> 
+                        <!-- <div ngbDropdownMenu aria-labelledby="dropdownBasic1"> 
+                          <button ngbDropdownItem>Add files to batch</button> 
+                          <button ngbDropdownItem>Delete files from batch</button> 
+                        </div>  -->
+                      </div> 
+                </span>
+            </div> 
+        </div> 
+    </div> 
+</div> 
+
+ 

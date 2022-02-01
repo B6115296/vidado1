@@ -1,0 +1,51 @@
+<div class="container"> 
+    <div id="main-file-drop" class="file-drop"> 
+        <div> 
+          <!-- <div class="top-text" *ngIf="batchId"> 
+            <div class="big-text">Drag your files here to begin</div> 
+            <a>or click to browse</a> 
+          </div> --> 
+            <div class="show-text" style="padding-top: 50px;"> 
+              <div class="big-text">Drag your files here to begin</div> 
+              <a>or click to browse</a> 
+            </div> 
+                <input type="file" multiple="true" ng2FileSelect [uploader]="uploader" 
+                accept="image/tiff, image/gif, image/png, image/jpeg, application/pdf">
+        </div> 
+    </div> 
+</div> 
+
+<!-- Button trigger modal --> 
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalcreatebatch" #modalcreatebatch  
+        style="display:  none;"> 
+    Launch demo modal 
+</button> 
+
+  <!-- Modal --> 
+  <div class="modal fade" id="modalcreatebatch" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> 
+    <div class="modal-dialog"> 
+      <div class="modal-content"> 
+        <div class="modal-header"> 
+            <h2>Name this batch</h2> 
+        </div> 
+        <div class="modal-body"> 
+            <form [formGroup]="batch" (ngSubmit)="onSubmit()"> 
+                <div class="form-group"> 
+                    <input type="text" class="form-control" formControlName="name" > 
+                </div> 
+                <div class="modal-footer"> 
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="clearFiles()">Cancle</button> 
+                    <button type="button" type="submit"  class="btn btn-primary modal-delete-batch-button"data-bs-dismiss="modal" >OK</button> 
+                </div> 
+            </form>  
+        </div> 
+      </div> 
+    </div> 
+  </div> 
+
+ 
+ 
+
+   
+
+ 

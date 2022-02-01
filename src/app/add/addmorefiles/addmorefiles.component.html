@@ -1,0 +1,33 @@
+<div class="container"> 
+    <app-batch-details *ngIf="batchId" [batch]="batch"></app-batch-details> 
+    <div id="upload-details" class="row"> 
+        <div class=""> 
+          <ul class="thumbnails list-inline"> 
+              <li *ngFor="let item of uploader.slice(-5); index as i"> 
+                <div class="thumbnail-container" > 
+                  <div style="position: relative"> 
+                    <img *ngIf="item.isUploaded == true " src="item?._file" imgPreview  class="media-object"/> 
+                    <div class="uploading-spinner-div" *ngIf="item.isUploading == true"> 
+                      <img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Ajax_loader_metal_512.gif" /> 
+                    </div> 
+                    <span *ngIf="item.isError == false && item.isUploaded" class="fa fa-check ok-upload-checkmark-sign" style=""></span> 
+                    <span *ngIf="item.isError == true" class="fa fa-times failed-upload-sign"></span> 
+                  </div> 
+                  <div *ngIf="item.isUploading || item.isUploaded" class="caption">{{item.file.name}}</div> 
+                </div> 
+              </li> 
+          </ul> 
+          <div class="dropzone-file"> 
+            <app-createbatch></app-createbatch> 
+            <!-- <div class="top-text" *ngIf="batchId"> 
+              <div class="big-text">Drag your files here to begin</div> 
+              <a>or click to browse</a> 
+            </div> -->
+            <div class="left-bottom-button"> 
+              <button class="btn btn-primary" *ngIf="batchId" (click)="show()" routerLink="/box/{{batchId}}" style="margin-right: 20px;">Finish</button> 
+              <button class="btn btn-primary" *ngIf="!batchId " (click)="show()" routerLink="/home" style="margin-right: 20px;">Finish</button> 
+            </div> 
+          </div> 
+        </div> 
+    </div> 
+  </div> 

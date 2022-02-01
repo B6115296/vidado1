@@ -1,0 +1,86 @@
+body {
+  margin: 0;
+
+  padding: 0;
+
+  box-sizing: border-box;
+}
+
+.centered-context {
+  display: flex;
+
+  flex-direction: column;
+
+  width: 100%;
+
+  height: 100%;
+}
+
+.home-container {
+  margin-bottom: 0;
+
+  padding: 0px 100px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  align-items: center;
+
+  box-sizing: border-box;
+}
+
+.container {
+}
+
+.dropbox-zone {
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  width: 65%;
+
+  height: 50%;
+}
+
+.show-table-batch {
+  margin: 10px 0px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  background: white;
+
+  border-radius: 8px;
+
+  width: 100%;
+
+  height: 35%;
+}
+
+.form-select {
+  width: 150px;
+}
+
+p {
+  margin-bottom: 5px;
+}
+
+.option-select:hover {
+  background: #eeeeee;
+}
+
+.dropzone-file {
+  border: 2px dashed #1babe2;
+
+  height: 150px;
+
+  input {
+    max-height: fit-content;
+  }
+}

@@ -1,0 +1,66 @@
+<div class="centered-context">
+  <div class="home-container">
+    <div class="dropbox-zone">
+      <div class="show-batch">
+        <p>You have {{batchs.length}} batches in your inbox.</p>
+
+        <p>New Batch</p>
+      </div>
+
+      <div class="dropbox">
+        <!-- <app-dragdrop></app-dragdrop> -->
+
+        <div class="dropzone-file">
+          <app-createbatch></app-createbatch>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="show-table-batch">
+      <div class="filterby">
+        <p>Filter by</p>
+
+        <div class="select is-info">
+          <select
+            class="form-select"
+            [(ngModel)]="selectedFilter"
+            (change)="valueSelected()"
+          >
+            <option class="option-select" *ngFor="let item of batchFilter"
+              >{{item}}</option
+            >
+          </select>
+        </div>
+      </div>
+
+      <div class="tablebatch">
+        <app-batch-table [batchs]="batchs"></app-batch-table>
+      </div>
+
+    </div> -->
+  </div>
+</div>
+
+<div class="" *ngFor="let item of allfiles">
+  <img src="item" />
+</div>
+
+<!-- <img [appLazyLoad]="'https://placekitten.com/405/405'" width=' 405' height='405' alt=''> -->
+
+<!-- <img appLazyLoad="https://placekitten.com/406/406" width=' 406' height='406' alt=''> 
+
+<img appLazyLoad="https://placekitten.com/407/407" width=' 407' height='407' alt=''> 
+
+<img appLazyLoad="https://placekitten.com/408/408" width=' 408' height='408' alt=''> 
+
+<img appLazyLoad="https://placekitten.com/409/409" width=' 409' height='409' alt=''> 
+
+<img appLazyLoad="https://placekitten.com/410/410" width=' 410' height='410' alt=''> 
+
+<img appLazyLoad="https://placekitten.com/411/411" width=' 411' height='411' alt=''> 
+
+<img appLazyLoad="https://placekitten.com/412/412" width=' 412' height='412' alt=''> 
+
+<img appLazyLoad="https://placekitten.com/413/413" width=' 413' height='413' alt=''> 
+
+<img appLazyLoad="https://placekitten.com/414/414" width=' 414' height='414' alt=''> -->

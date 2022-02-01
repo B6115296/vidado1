@@ -1,0 +1,16 @@
+<div class="container"> 
+    <div class="page-error" *ngIf="errorcollection.length != 0"> 
+        <div id="page-message-content"> 
+            <div> 
+                <div class="showerr"> 
+                   <div class="header-error" style="justify-content: center; display:flex;"> I couldnt upload the following files:</div> 
+                    <div > 
+                        <ul *ngFor="let err of errorcollection"> 
+                            <li>{{err}}</li> 
+                        </ul> 
+                    </div> 
+                </div> 
+            </div> 
+        </div> 
+    </div> 
+</div> 

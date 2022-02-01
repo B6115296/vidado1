@@ -1,0 +1,140 @@
+.container {
+    margin-bottom: 0;
+  
+    padding: 0px 80px;
+  
+    box-sizing: border-box;
+  }
+  
+  .batch-header {
+    display: flex;
+  
+    align-items: center;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+  
+  .row {
+    margin-bottom: 0;
+  
+    padding: 0px 0px;
+  
+    box-sizing: border-box;
+  
+    --bs-gutter-x: 0rem;
+  }
+  
+  .row.header {
+    padding: 0px 0px;
+  }
+  
+  .batch-header {
+    display: flex;
+  
+    align-items: center;
+  }
+  
+  .process-button {
+    background-color: #fff;
+  
+    font-weight: 600;
+  
+    height: 72px;
+  
+    width: 135px;
+  
+    margin-left: -3px;
+  }
+  
+  .batchfiles-container {
+    -webkit-text-size-adjust: 100%;
+  
+    -webkit-tap-highlight-color: transparent;
+  
+    font-size: 14px;
+  
+    line-height: 1.42857;
+  
+    color: #606161;
+  
+    font-weight: 300;
+  
+    font-family: "Open Sans", sans-serif;
+  
+    box-sizing: border-box;
+  
+    background-color: #fff;
+  
+    border: 3px solid #f7ead7;
+  
+    min-height: 235px;
+  }
+  
+  .batch-info {
+    display: flex;
+  
+    justify-content: space-between;
+  
+    margin-bottom: 10px;
+  }
+  
+  .subbatch-info {
+    display: flex;
+  
+    justify-content: center;
+  
+    align-items: center;
+  
+    margin-bottom: 0px;
+  }
+  
+  .batchfiles.row {
+    margin-top: 25px;
+  
+    margin-bottom: 25px;
+  
+    margin-left: 25px;
+  
+    margin-right: 25px;
+  }
+  
+  .batch-number-of-files {
+    line-height: 1.42857;
+  
+    color: #606161;
+  
+    font-weight: 300;
+  
+    word-wrap: break-word;
+  
+    font-size: 12px;
+  }
+  
+  .batch-name {
+    -webkit-text-size-adjust: 100%;
+  
+    -webkit-tap-highlight-color: transparent;
+  
+    box-sizing: border-box;
+  
+    margin: 0.67em 0;
+  
+    font-family: inherit;
+  
+    font-weight: 600;
+  
+    line-height: 1.1;
+  
+    color: inherit;
+  
+    margin-top: 20px;
+  
+    margin-bottom: 10px;
+  
+    font-size: 24px;
+  
+    color: #606161;
+  }
+  
